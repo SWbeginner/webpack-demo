@@ -1,16 +1,15 @@
 'use strict';
 
-import React from 'react';
-import ReactDOM from 'react-dom';
-import largeNumber from 'large-number-wangcw';
-import './search.less';
-import image from './images/longzhu.jpg';
-import { func } from '../../common';
-import { a } from './tree-shaking';
+// import React from 'react';
+// import largeNumber from 'large-number-wangcw';
+// import './search.less';
+// import image from './images/longzhu.jpg';
+// import { func } from '../../common';
 
-if(false){
-    a();
-}
+const React = require('react');
+const largeNumber = require('large-number-wangcw');
+const Image = require('./images/longzhu.jpg');
+require('./search.less');
 
 class Search extends React.Component {
     constructor() {
@@ -31,11 +30,10 @@ class Search extends React.Component {
 
     render() {
         const { Text } = this.state;
-        const resultText = func();
         const addResult = largeNumber('1', '999');
 
-        return (<div className="search-text">{ resultText } Search Textadd { addResult }
-                    <img src={ image } onClick={ this.loadComponent.bind(this) }/>
+        return (<div className="search-text">Search Textadd { addResult }
+                    <img src={ Image } onClick={ this.loadComponent.bind(this) }/>
                     {
                         Text ? <Text/> : null
                     }
@@ -43,7 +41,4 @@ class Search extends React.Component {
     }
 }
 
-ReactDOM.render(
-    <Search/>,
-    document.getElementById('root')
-);
+module.exports = <Search />;
